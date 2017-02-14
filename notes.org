@@ -1,0 +1,6 @@
+* Tasks
+** TODO  cpp thread
+   [[http://blog.csdn.net/shreck66/article/details/50409874]]
+   [2017-01-11 三]
+** TODO 查看 /etc/NetworkManager/NetworkManager.conf
+   [2017-02-14 二]
