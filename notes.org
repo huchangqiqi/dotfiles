@@ -4,3 +4,6 @@
    [2017-01-11 三]
 ** TODO 查看 /etc/NetworkManager/NetworkManager.conf
    [2017-02-14 二]
+** TODO test dotfiles ln
+   [2017-02-14 二]
+   [[file:~][file:~]]
