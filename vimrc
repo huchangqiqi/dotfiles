@@ -109,7 +109,7 @@ let g:syntastic_enable_balloons = 1
 
 
 """"""""""""YCM""""""""""""""""""""
-let g:ycm_global_ycm_extra_conf = '~/code/global_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/global_conf.py'
 "let g:ycm_collect_identifiers_from_tags_files = 1
 set completeopt=longest,menu	"让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif	"离开插入模式后自动关闭预览窗口
