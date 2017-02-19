@@ -59,7 +59,7 @@ URxvt*saveLines:                      5000
 ! URxvt*shading:                        138
 
 ! other possible settings:
-! Rxvt.perl-ext-common: ...,clipboard
+Rxvt.perl-ext-common: default,clipboard,tabbedex,matcher,...
 ! URxvt.keysym.M-C-c:   perl:clipboard:copy
 ! URxvt.keysym.M-v:   perl:clipboard:paste
 ! URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
@@ -181,8 +181,8 @@ URxvt*saveLines:                      5000
 ! URxvt*selection-pastebin.cmd:         string
 ! URxvt*selection-pastebin.url:         string
 ! URxvt*selection.pattern-0:            string
-! URxvt*tab-bg:                         colour
-! URxvt*tab-fg:                         colour
-! URxvt*tabbar-bg:                      colour
-! URxvt*tabbar-fg:                      colour
+URxvt*tab-bg:                         colour
+URxvt*tab-fg:                         colour
+URxvt*tabbar-bg:                      colour
+URxvt*tabbar-fg:                      colour
 ! URxvt*url-launcher:                   string
