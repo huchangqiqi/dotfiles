@@ -334,7 +334,7 @@ you should place your code here."
 (add-hook 'c++-mode-hook 'ycmd-mode)
 (add-hook 'c-mode-hook 'ycmd-mode)
 (add-hook 'python-mode-hook 'ycmd-mode)
-(add-hook 'js-mode-hook 'ycmd-mode)
+(add-hook 'js2-mode-hook 'ycmd-mode)
 (require 'company-ycmd)
 (company-ycmd-setup)
 
