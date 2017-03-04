@@ -147,11 +147,11 @@ bindsym $mod+Ctrl+Left workspace prev
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
 #                 
-set $WS1 term
-set $WS2 web
-set $WS3 emacs
-set $WS4 media
-set $WS5 code                 
+set $WS1 Term
+set $WS2 Web
+set $WS3 Editor
+set $WS4 Media
+set $WS5 Code                 
 set $ws6 6
 set $ws7 7
 set $ws8 8
@@ -187,11 +187,12 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
-#assign [class="URxvt"] $ws1
-assign [class="(?i)termite"] $ws1 
+assign [class="URxvt"] $ws1
+assign [class="(?i)xfce4-terminal"] $ws1
 assign [class="(?i)chromium"] $ws2 
 assign [class="(?i)google-chrome"] $ws2
 assign [class="(?i)Emacs"] $ws3
+# assign [class="(?i)termite"] $ws1 
 # assign [class="(?i)gVim"] 3: Editor
 # assign [class="(?i)Steam"] 4: Media
 # assign [class="(?i)Pidgin"] 4: Media
