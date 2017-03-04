@@ -146,11 +146,12 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
-set $ws5 5
+#                 
+set $WS1 term
+set $WS2 web
+set $WS3 emacs
+set $WS4 media
+set $WS5 code                 
 set $ws6 6
 set $ws7 7
 set $ws8 8
@@ -186,8 +187,18 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
-assign [class="emacs"] $ws2
-assign [class="chormium"] $ws1
+#assign [class="URxvt"] $ws1
+assign [class="(?i)termite"] $ws1 
+assign [class="(?i)chromium"] $ws2 
+assign [class="(?i)google-chrome"] $ws2
+assign [class="(?i)Emacs"] $ws3
+# assign [class="(?i)gVim"] 3: Editor
+# assign [class="(?i)Steam"] 4: Media
+# assign [class="(?i)Pidgin"] 4: Media
+# assign [class="(?i)Hexchat"] 4: Media
+# assign [class="(?i)mplayer"] 4: Media
+# assign [class="(?i)Dota"] 4: Media
+# assign [class="(?i)crossover"] 5: Others
 # assign [class="Thunderbird"] $ws1
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
