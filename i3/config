@@ -72,9 +72,6 @@ bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
-bindsym Ctrl+Alt+c exec chromium
-bindsym Ctrl+Alt+e exec emacs
-
 # focus_follows_mouse no
 
 # change focus
@@ -195,10 +192,10 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # Open applications on specific workspaces
 assign [class="URxvt"] $ws1
 assign [class="(?i)xfce4-terminal"] $ws1
-assign [class="(?i)chromium"] $ws2 
+assign [class="(?i)termite"] $ws1
 assign [class="(?i)google-chrome"] $ws2
 assign [class="(?i)Emacs"] $ws3
-# assign [class="(?i)termite"] $ws1 
+# assign [class="(?i)Chromium"] $ws2 
 # assign [class="(?i)gVim"] 3: Editor
 # assign [class="(?i)Steam"] 4: Media
 # assign [class="(?i)Pidgin"] 4: Media
