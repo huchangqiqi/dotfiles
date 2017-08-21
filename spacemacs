@@ -387,6 +387,9 @@ you should place your code here."
 (evil-leader/set-key
   "oy"'youdao-dictionary-search-at-point+)
  )
+;; mouse
+;; (xterm-mouse-mode -1)
+(setq x-select-enable-primary t)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
