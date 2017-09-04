@@ -393,6 +393,9 @@ you should place your code here."
 
 ;;flymd
 ;; (require 'flymd)
+
+;;git
+(global-git-commit-mode t)
 )
 
 

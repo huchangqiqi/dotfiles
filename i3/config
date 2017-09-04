@@ -309,6 +309,10 @@ exec --no-startup-id volumeicon
 exec --no-startup-id copyq
 exec --no-startup-id LC_CTYPE=zh_CN.UTF-8 emacs -T "Emacs"
 
+# 
+# bindsym $mod+Shift+c exec chromium
+# bindsym $mod+e exec emacs
+
 # exec --no-startup-id blueman
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia

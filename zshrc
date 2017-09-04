@@ -88,6 +88,7 @@ alias e="emacsclient -t"
 alias ec="emacsclient -c"
 alias et="emacs -nw"
 alias vi="vim"
+export EDITOR='vim'
 
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
