@@ -307,7 +307,9 @@ exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id fcitx 
 exec --no-startup-id volumeicon
 exec --no-startup-id copyq
-exec --no-startup-id LC_CTYPE=zh_CN.UTF-8 emacs -T "Emacs"
+# exec --no-startup-id LC_CTYPE=zh_CN.UTF-8 emacs -T "Emacs"
+exec --no-startup-id termite -e "emacs -nw"
+# exec --no-startup-id emacs -nw
 
 # 
 # bindsym $mod+Shift+c exec chromium
@@ -325,7 +327,8 @@ exec_always --no-startup-id fix_xcursor
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	status_command i3status
-	position bottom
+	position top
+    mode hide
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
@@ -339,10 +342,9 @@ bar {
 	colors {
 #	background $transparent
 		background #2B2C2B
-                statusline #F9FAF9
+        statusline #F9FAF9
 		separator  #454947
 
-#                                  border  backgr. text
 		focused_workspace  #F9FAF9 #16A085 #2B2C2B
 		active_workspace   #595B5B #353836 #FDF6E3
 		inactive_workspace #595B5B #353836 #EEE8D5

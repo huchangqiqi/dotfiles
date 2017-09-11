@@ -86,7 +86,7 @@ export TERM=xterm-256color
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias e="emacsclient -t"
 alias ec="emacsclient -c"
-alias et="emacs -nw"
+alias enw="emacs -nw"
 alias vi="vim"
 export EDITOR='vim'
 
