@@ -133,7 +133,7 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " >>
 " 工程文件浏览
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
-map <Leader>e :NERDTreeToggle<CR>
+map <leader>e :NERDTreeToggle<CR>
 " 设置 NERDTree 子窗口宽度
 let NERDTreeWinSize=22
 " 设置 NERDTree 子窗口位置
@@ -144,11 +144,6 @@ let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
-
-"let g:ycm_global_ycm_extra_conf = /home/
-
-
-
 
 ""一键编译
 func! CompileGcc()

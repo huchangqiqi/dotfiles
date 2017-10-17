@@ -55,7 +55,8 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec palemoon
+# bindsym $mod+F2 exec palemoon
+bindsym $mod+F2 exec chromium
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
@@ -75,7 +76,7 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
-bindsym $mod+odiaeresis focus right
+bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -101,7 +102,7 @@ bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+h split h;exec notify-send 'tile horizontally'
+bindsym $mod+Ctrl+h split h;exec notify-send 'tile horizontally'
 bindsym $mod+v split v;exec notify-send 'tile vertically'
 bindsym $mod+q split toggle
 
@@ -307,8 +308,12 @@ exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id fcitx 
 exec --no-startup-id volumeicon
 exec --no-startup-id copyq
-# exec --no-startup-id LC_CTYPE=zh_CN.UTF-8 emacs -T "Emacs"
-exec --no-startup-id termite -e "emacs -nw"
+exec --no-startup-id LC_CTYPE=zh_CN.UTF-8 emacs -T "Emacs" 
+# exec --no-startup-id termite -e "emacs -nw"
+exec --no-startup-id termite -e "tmux new -s work" 
+
+# exec xrandr --output DP1 --auto --rotate right 
+exec --no-startup-id xrandr --output HDMI1 --auto  --pos 0x0 --output DP1 --primary --pos 1920x30
 # exec --no-startup-id emacs -nw
 
 # 
@@ -331,8 +336,8 @@ bar {
     mode hide
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
+	tray_output primary
+	tray_output eDP1
 
 	bindsym button4 nop
 	bindsym button5 nop

@@ -328,21 +328,24 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-;;company mode
-(add-hook 'c-mode-hook 'company-mode)
 
 ;;ycmd
 (require 'ycmd)
-;;(set-variable 'ycmd-server-command '("python" "/home/spike/ycmd/ycmd/"))
+(add-hook 'after-init-hook #'global-ycmd-mode)
 (set-variable 'ycmd-server-command '("python" "/home/spike/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd/"))
 (set-variable 'ycmd-global-config "/home/spike/global_conf.py")
+
 ;;(set-variable 'ycmd-extra-conf-whitelist '("/home/spike/CODE/*"))
-(add-hook 'c++-mode-hook 'ycmd-mode)
-(add-hook 'c-mode-hook 'ycmd-mode)
-(add-hook 'python-mode-hook 'ycmd-mode)
-(add-hook 'js2-mode-hook 'ycmd-mode)
+;;(add-hook 'c++-mode-hook 'ycmd-mode)
+;;(add-hook 'c-mode-hook 'ycmd-mode)
+;;(add-hook 'python-mode-hook 'ycmd-mode)
+;;(add-hook 'js2-mode-hook 'ycmd-mode)
+
 (require 'company-ycmd)
 (company-ycmd-setup)
+
+(require 'flycheck-ycmd)
+(flycheck-ycmd-setup)
 
 (global-company-mode t)
 (global-flycheck-mode t)
@@ -351,12 +354,14 @@ you should place your code here."
 (setq company-backends-c-mode-common '((company-c-headers
                                          company-ycmd
                                          company-dabbrev :with company-yasnippet)))
-;;(require 'flycheck-ycmd)
-;;(flycheck-ycmd-setup)
+
 ;;(setq org-default-notes-file (concat org-directory "/CODE/org/notes.org"))
+;;company mode
+;;(add-hook 'c-mode-hook 'company-mode)
 
 ;;org
 (define-key global-map "\C-cc" 'org-capture)
+
 ;;elpy
 ;;(elpy-enable)
 
@@ -364,9 +369,9 @@ you should place your code here."
 (add-hook 'doc-view-minor-mode-hook 'auto-revert-mode)
 
 ;; indent
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
-(setq c-basic-offset 4)
+;;(setq-default tab-width 4)
+;;(setq-default indent-tabs-mode nil)
+;;(setq c-basic-offset 4)
 
 ;; Bind clang-format-region to C-M-tab in all modes:
 ;;(global-set-key [C-M-tab] 'clang-format-region)
