@@ -77,6 +77,7 @@ bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
+# bindsym $mod+odiaeresis focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -297,7 +298,7 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
-exec_always --no-startup-id feh --bg-scale ~/dotfiles/wallpaper.png
+exec_always --no-startup-id feh --bg-scale ~/dotfiles/double.jpg
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
