@@ -1,0 +1,20 @@
+{
+    "configs": [
+        {
+            "method": "aes-256-cfb",
+            "password": "eS8sahncjUuv",
+            "remarks": "zxp",
+            "server": "hk02-53.ssv7.net",
+            "server_port": 23472
+        },
+        {
+            "method": "chacha20",
+            "password": "Appleisbad",
+            "remarks": "cha",
+            "server": "linhkcent.southeastasia.cloudapp.azure.com",
+            "server_port": 10086
+        }
+    ],
+    "localPort": 1080,
+    "shareOverLan": false
+}

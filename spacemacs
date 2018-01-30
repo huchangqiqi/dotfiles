@@ -36,48 +36,49 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     haskell
-     javascript
-     python
-     sql
-     scheme
-     racket
-     emacs-lisp
+		haskell
+		javascript
+		python
+		sql
+		scheme
+		racket
+		emacs-lisp
+		html
+		latex
+		markdown
 
-     html
-     latex
-     markdown
-     helm
-     auto-completion
-     ycmd
-     gtags
-     org
-     git
-     (chinese :variables
-              chinese-enable-fcitx t
-              chinese-enable-youdao-dict t)
-     (c-c++ :variables
+		ranger
+		imenu-list
+		helm
+		auto-completion
+		ycmd
+		gtags
+		org
+		git
+		(chinese :variables
+			chinese-enable-fcitx t
+			chinese-enable-youdao-dict t)
+		(c-c++ :variables
             c-c++-enable-clang-support t)
-
-     (shell :variables
-             shell-default-term-shell "/bin/zsh"
-             shell-default-height 30
-             shell-default-position 'bottom
-             )
-     syntax-checking
-     version-control
-     ;; better-defaults
-     ;; semantic
-     ;; spell-checking
-     )
+		(shell :variables
+			shell-default-term-shell "/bin/zsh"
+			shell-default-height 30
+			shell-default-position 'bottom
+			)
+		syntax-checking
+		version-control
+		;; better-defaults
+		;; semantic
+		;; spell-checking
+		)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-                                      (editorconfig
-                                       :ensure t)
-                                      ;; flymd
+                                      (editorconfig :ensure t)
+										 ;; flymd
+										 openwith
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -183,7 +184,7 @@ values."
    ;; and TAB or <C-m> and RET.
    ;; In the terminal, these pairs are generally indistinguishable, so this only
    ;; works in the GUI. (default nil)
-   dotspacemacs-distinguish-gui-tab nil
+   dotspacemacs-distinguish-gui-tab t
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
    dotspacemacs-remap-Y-to-y$ nil
    ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
@@ -361,7 +362,9 @@ you should place your code here."
 
 ;;org
 (define-key global-map "\C-cc" 'org-capture)
-
+(setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f" "xelatex -interaction nonstopmode %f"))
+(setq org-latex-default-packages-alist
+	(remove '("AUTO" "inputenc" t) org-latex-default-packages-alist))
 ;;elpy
 ;;(elpy-enable)
 
@@ -401,6 +404,12 @@ you should place your code here."
 
 ;;git
 (global-git-commit-mode t)
+
+;; openwith
+(require 'openwith)
+(setq openwith-associations '(("\\.odt\\'" "libreoffice" (file))))
+(openwith-mode t)
+
 )
 
 
@@ -411,31 +420,33 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(TeX-view-program-selection
-   (quote
-    (((output-dvi has-no-display-manager)
-      "dvi2tty")
-     ((output-dvi style-pstricks)
-      "dvips and gv")
-     (output-dvi "xdvi")
-     (output-pdf "xpdf")
-     (output-html "xdg-open"))))
- '(ansi-color-names-vector
-   ["#d2ceda" "#f2241f" "#67b11d" "#b1951d" "#3a81c3" "#a31db1" "#21b8c7" "#655370"])
- '(auctex-latexmk-inherit-TeX-PDF-mode t t)
+	'(TeX-view-program-selection
+		 (quote
+			 (((output-dvi has-no-display-manager)
+				  "dvi2tty")
+				 ((output-dvi style-pstricks)
+					 "dvips and gv")
+				 (output-dvi "xdvi")
+				 (output-pdf "xpdf")
+				 (output-html "xdg-open"))))
+	'(ansi-color-names-vector
+		 ["#d2ceda" "#f2241f" "#67b11d" "#b1951d" "#3a81c3" "#a31db1" "#21b8c7" "#655370"])
+ '(auctex-latexmk-inherit-TeX-PDF-mode t)
+ '(browse-url-browser-function (quote browse-url-chromium))
  '(evil-want-Y-yank-to-eol nil)
  '(latex-run-command "xelatex")
  '(org-agenda-files (quote ("~/CODE/org/spacemacs.org" "~/CODE/org/todo.org")))
- '(org-babel-load-languages
-   (quote
-    ((shell . t)
-     (python . t)
-     (emacs-lisp . t)
-     (js . t))))
+	'(org-babel-load-languages
+		 (quote
+			 ((shell . t)
+				 (python . t)
+				 (emacs-lisp . t)
+				 (js . t))))
  '(org-directory "~/CODE/org/")
- '(package-selected-packages
-   (quote
-    (flymd youdao-dictionary names chinese-word-at-point intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode geiser slime-company slime common-lisp-snippets dracual-theme dracula-theme web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data fcitx pangu-spacing find-by-pinyin-dired chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode racket-mode faceup vmd-mode editorconfig editorconfig-domain-specific stickyfunc-enhance srefactor git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl auctex-latexmk company-auctex auctex web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode elpy disaster company-c-headers cmake-mode clang-format pyenv-mode company-anaconda anaconda-mode yapfify pyvenv pytest py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode pythonic helm-gtags ggtags sql-indent xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help flycheck-ycmd company-ycmd ycmd request-deferred deferred smeargle orgit org-projectile pcache org-present org org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete mmm-mode markdown-toc markdown-mode gh-md spinner adaptive-wrap smartparens iedit anzu evil goto-chg undo-tree highlight f s bind-map packed dash helm avy helm-core popup async package-build evil-unimpaired ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode spacemacs-theme quelpa evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line))))
+ '(org-export-backends (quote (ascii beamer html icalendar latex md odt)))
+	'(package-selected-packages
+		 (quote
+			 (ranger openwith imenu-list flymd youdao-dictionary names chinese-word-at-point intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode geiser slime-company slime common-lisp-snippets dracual-theme dracula-theme web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data fcitx pangu-spacing find-by-pinyin-dired chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode racket-mode faceup vmd-mode editorconfig editorconfig-domain-specific stickyfunc-enhance srefactor git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl auctex-latexmk company-auctex auctex web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode elpy disaster company-c-headers cmake-mode clang-format pyenv-mode company-anaconda anaconda-mode yapfify pyvenv pytest py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode pythonic helm-gtags ggtags sql-indent xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help flycheck-ycmd company-ycmd ycmd request-deferred deferred smeargle orgit org-projectile pcache org-present org org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete mmm-mode markdown-toc markdown-mode gh-md spinner adaptive-wrap smartparens iedit anzu evil goto-chg undo-tree highlight f s bind-map packed dash helm avy helm-core popup async package-build evil-unimpaired ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode spacemacs-theme quelpa evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

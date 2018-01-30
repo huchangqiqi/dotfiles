@@ -84,10 +84,12 @@ export TERM=xterm-256color
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias e="emacsclient -t"
+alias et="emacsclient -t"
 alias ec="emacsclient -c"
-alias enw="emacs -nw"
+alias enw="emacsclient -nw"
 alias vi="vim"
+alias chromium="chromium %U --proxy-server=127.0.0.1:8118"
+alias ss5="nohup sslocal -c ~/dotfiles/config.json &"
 export EDITOR='vim'
 
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache

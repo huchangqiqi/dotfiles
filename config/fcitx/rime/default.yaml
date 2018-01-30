@@ -9,6 +9,7 @@ schema_list:
   - #schema: wubi86
   - #schema: luna_pinyin_fluency
   - schema: luna_pinyin_simp
+  - schema: double_pinyin
   - #schema: bopomofo_tw
 
 switcher:
