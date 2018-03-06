@@ -363,8 +363,8 @@ you should place your code here."
 ;;org
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f" "xelatex -interaction nonstopmode %f"))
-(setq org-latex-default-packages-alist
-	(remove '("AUTO" "inputenc" t) org-latex-default-packages-alist))
+;; (setq org-latex-default-packages-alist
+	;; (remove '("AUTO" "inputenc" t) org-latex-default-packages-alist))
 ;;elpy
 ;;(elpy-enable)
 
