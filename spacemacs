@@ -36,6 +36,8 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+    gnus
+    mu4e
 		haskell
     (javascript :variables javascript-disable-tern-port-files t)
 		python
@@ -404,6 +406,58 @@ you should place your code here."
 (setq openwith-associations '(("\\.odt\\'" "libreoffice" (file))))
 (openwith-mode t)
 
+;; mu4e
+(setq mu4e-maildir "~/mail"
+      mu4e-drafts-folder "/Drafts"
+      mu4e-sent-folder   "/Sent Messages"
+      mu4e-refile-folder "/Archive"
+      mu4e-trash-folder "/Deleted Messages"
+      mu4e-get-mail-command "mbsync -a"
+      mu4e-update-interval nil
+      mu4e-compose-signature-auto-include nil
+      mu4e-view-show-images t
+      mu4e-view-show-addresses t)
+;;; Mail directory shortcuts
+(setq mu4e-maildir-shortcuts
+      '(("/INBOX" . ?i)
+        ("/Sent Messages" . ?s)
+        ("/Junk" . ?j)
+        ("/Deleted Messages" . ?d)
+        ))
+
+;; (setq mu4e-get-mail-command "offlineimap")
+
+;; something about ourselves
+(setq user-mail-address "changqi.hu@ww-it.cn"
+      user-full-name  "Changqi Hu"
+      mu4e-compose-signature
+      (concat
+       "Changqi Hu\n"
+       "Email: changqi.hu@ww-it.cn\n"
+       "\n")
+      mu4e-compose-signature-auto-include t
+      )
+
+
+;;send mail
+(require 'smtpmail)
+(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-stream-type 'starttls
+      smtpmail-default-smtp-server "smtp.exmail.qq.com"
+      smtpmail-smtp-server "smtp.exmail.qq.com"
+      smtpmail-smtp-service 587)
+
+(setq mu4e-view-show-images t)
+
+;; save attachment to my desktop (this can also be a function)
+(setq mu4e-attachment-dir "~/Downloads")
+
+;; sync email from imap server
+(setq mu4e-get-mail-command "offlineimap"
+      mu4e-update-interval 300)
+;; notifcation
+(setq mu4e-enable-notifications t)
+(mu4e-alert-enable-mode-line-display)
 )
 
 
@@ -440,7 +494,7 @@ you should place your code here."
  '(org-export-backends (quote (ascii beamer html icalendar latex md odt)))
  '(package-selected-packages
    (quote
-    (winum pyim pyim-basedict org-category-capture org-mime fuzzy ghub let-alist ranger openwith imenu-list flymd youdao-dictionary names chinese-word-at-point intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode geiser slime-company slime common-lisp-snippets dracual-theme dracula-theme web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data fcitx pangu-spacing find-by-pinyin-dired chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode racket-mode faceup vmd-mode editorconfig editorconfig-domain-specific stickyfunc-enhance srefactor git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl auctex-latexmk company-auctex auctex web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode elpy disaster company-c-headers cmake-mode clang-format pyenv-mode company-anaconda anaconda-mode yapfify pyvenv pytest py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode pythonic helm-gtags ggtags sql-indent xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help flycheck-ycmd company-ycmd ycmd request-deferred deferred smeargle orgit org-projectile pcache org-present org org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete mmm-mode markdown-toc markdown-mode gh-md spinner adaptive-wrap smartparens iedit anzu evil goto-chg undo-tree highlight f s bind-map packed dash helm avy helm-core popup async package-build evil-unimpaired ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode spacemacs-theme quelpa evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line))))
+    (mu4e-maildirs-extension mu4e-alert ht winum pyim pyim-basedict org-category-capture org-mime fuzzy ghub let-alist ranger openwith imenu-list flymd youdao-dictionary names chinese-word-at-point intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode geiser slime-company slime common-lisp-snippets dracual-theme dracula-theme web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data fcitx pangu-spacing find-by-pinyin-dired chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode racket-mode faceup vmd-mode editorconfig editorconfig-domain-specific stickyfunc-enhance srefactor git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl auctex-latexmk company-auctex auctex web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode elpy disaster company-c-headers cmake-mode clang-format pyenv-mode company-anaconda anaconda-mode yapfify pyvenv pytest py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode pythonic helm-gtags ggtags sql-indent xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help flycheck-ycmd company-ycmd ycmd request-deferred deferred smeargle orgit org-projectile pcache org-present org org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete mmm-mode markdown-toc markdown-mode gh-md spinner adaptive-wrap smartparens iedit anzu evil goto-chg undo-tree highlight f s bind-map packed dash helm avy helm-core popup async package-build evil-unimpaired ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode spacemacs-theme quelpa evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
