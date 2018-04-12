@@ -47,8 +47,7 @@ values."
 		emacs-lisp
 		html
 		latex
-		markdown
-
+    (markdown :variables markdown-live-preview-engine 'vmd)
 		ranger
 		imenu-list
 		helm
@@ -325,17 +324,20 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+(setq ycmd-force-semantic-completion t)
+(setq js2-include-node-externs t)
+
 ;;ycmd
 (require 'ycmd)
-(add-hook 'after-init-hook #'global-ycmd-mode)
+;; (add-hook 'after-init-hook #'global-ycmd-mode)
 (set-variable 'ycmd-server-command '("python" "/home/spike/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd/"))
 (set-variable 'ycmd-global-config "/home/spike/global_conf.py")
 
 ;;(set-variable 'ycmd-extra-conf-whitelist '("/home/spike/CODE/*"))
 ;;(add-hook 'c++-mode-hook 'ycmd-mode)
 ;;(add-hook 'c-mode-hook 'ycmd-mode)
-;;(add-hook 'python-mode-hook 'ycmd-mode)
-;;(add-hook 'js2-mode-hook 'ycmd-mode)
+(add-hook 'python-mode-hook 'ycmd-mode)
+(add-hook 'js2-mode-hook 'ycmd-mode)
 
 (require 'company-ycmd)
 (company-ycmd-setup)

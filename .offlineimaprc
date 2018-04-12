@@ -1,0 +1,21 @@
+[general]
+accounts = qq
+maxsyncaccounts = 3
+
+[Account qq]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = ~/mail
+
+[Repository Remote]
+type = IMAP
+remotehost = imap.exmail.qq.com
+ssl = yes
+remoteuser = changqi.hu@ww-it.cn
+remotepass = WwIT9intheend9
+maxconnections = 1
+realdelete = no
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt

@@ -285,8 +285,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-exec --no-startup-id LC_CTYPE=zh_CN.UTF-8 emacs -T "Emacs"
 exec --no-startup-id termite -e "tmux new -s work"
+exec --no-startup-id LC_CTYPE=zh_CN.UTF-8 emacs -T "Emacs"
 exec --no-startup-id  xrandr  --output DP1 --primary --mode 1680x1050 --pos 0x0 --output HDMI1 --mode 1920x1080 --pos 1680x0
 
 
