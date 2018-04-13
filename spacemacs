@@ -51,7 +51,7 @@ values."
 		ranger
 		imenu-list
 		helm
-		auto-completion
+		(auto-completion :variables auto-completion-enable-snippets-in-popup t)
 		ycmd
 		gtags
 		org
@@ -324,11 +324,11 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-(setq ycmd-force-semantic-completion t)
+;; (setq ycmd-force-semantic-completion t)
 (setq js2-include-node-externs t)
 
 ;;ycmd
-(require 'ycmd)
+;; (require 'ycmd)
 ;; (add-hook 'after-init-hook #'global-ycmd-mode)
 (set-variable 'ycmd-server-command '("python" "/home/spike/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd/"))
 (set-variable 'ycmd-global-config "/home/spike/global_conf.py")
@@ -339,14 +339,14 @@ you should place your code here."
 (add-hook 'python-mode-hook 'ycmd-mode)
 (add-hook 'js2-mode-hook 'ycmd-mode)
 
-(require 'company-ycmd)
-(company-ycmd-setup)
+;; (require 'company-ycmd)
+;; (company-ycmd-setup)
 
-(require 'flycheck-ycmd)
-(flycheck-ycmd-setup)
+;; (require 'flycheck-ycmd)
+;; (flycheck-ycmd-setup)
 
-(global-company-mode t)
-(global-flycheck-mode t)
+(global-company-mode)
+(global-flycheck-mode)
 
 ;;(add-to-list 'company-backends 'company-c-headers)
 (setq company-backends-c-mode-common '((company-c-headers
