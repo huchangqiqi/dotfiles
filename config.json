@@ -1,11 +1,12 @@
 {
-	"server":"linhkcent.southeastasia.cloudapp.azure.com",
-	"server_port":10086,
+	"server":"linv6.southeastasia.cloudapp.azure.com",
+	"server_port":50005,
 	"local_address":"127.0.0.1",
-	"local_port":1081,
-	"password":"Appleisbad",
+	"local_port":1080,
+	"password":"Microsoft!",
 	"timeout":300,
-	"method":"chacha20",
+	"method":"aes-256-cfb",
 	"fast_open":false,
 	"workers":1
 }
+

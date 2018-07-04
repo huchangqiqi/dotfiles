@@ -88,8 +88,9 @@ alias et="emacsclient -t"
 alias ec="emacsclient -c &"
 alias em="emacsclient -nw"
 alias vi="vim"
-alias chromium="chromium %U --proxy-server=127.0.0.1:8118"
+alias chromium="chromium %U --proxy-server=127.0.0.1:1080"
 alias ss5="nohup sslocal -c ~/dotfiles/config.json &"
+#alias aria2c ="aria2c --conf-path=\"/home/spike/dotfiles/aria2/aria2.conf\" -D "
 export EDITOR='vim'
 
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
@@ -120,3 +121,9 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+PATH="/home/spike/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/spike/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/spike/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/spike/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/spike/perl5"; export PERL_MM_OPT;
