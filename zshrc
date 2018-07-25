@@ -90,7 +90,7 @@ alias em="emacsclient -nw"
 alias vi="vim"
 alias chromium="chromium %U --proxy-server=127.0.0.1:1080"
 alias ss5="nohup sslocal -c ~/dotfiles/config.json &"
-#alias aria2c ="aria2c --conf-path=\"/home/spike/dotfiles/aria2/aria2.conf\" -D "
+alias aria2c="aria2c --conf-path=/home/spike/dotfiles/aria2/aria2.conf"
 export EDITOR='vim'
 
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache

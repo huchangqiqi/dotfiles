@@ -78,7 +78,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(org-projectile)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -146,8 +146,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(spacemacs-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -325,29 +324,32 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+
+;; logo
+;; (setq-default dotspacemacs-startup-banner '"~/dotfile")
+
 ;; (setq ycmd-force-semantic-completion t)
 (setq js2-include-node-externs t)
 
 ;;ycmd
-;; (require 'ycmd)
 ;; (add-hook 'after-init-hook #'global-ycmd-mode)
 (set-variable 'ycmd-server-command '("python" "/home/spike/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd/"))
-(set-variable 'ycmd-global-config "/home/spike/global_conf.py")
+(set-variable 'ycmd-global-config "/home/spike/dotfiles/.ycm_extra_conf.py")
 
 ;;(set-variable 'ycmd-extra-conf-whitelist '("/home/spike/CODE/*"))
 ;;(add-hook 'c++-mode-hook 'ycmd-mode)
-;;(add-hook 'c-mode-hook 'ycmd-mode)
+;; (add-hook 'c-mode-hook 'ycmd-mode)
 (add-hook 'python-mode-hook 'ycmd-mode)
 (add-hook 'js2-mode-hook 'ycmd-mode)
 
-;; (require 'company-ycmd)
-;; (company-ycmd-setup)
+(require 'company-ycmd)
+(company-ycmd-setup)
 
 ;; (require 'flycheck-ycmd)
 ;; (flycheck-ycmd-setup)
 
-(global-company-mode)
-(global-flycheck-mode)
+;; (global-company-mode)
+;; (global-flycheck-mode)
 
 ;;(add-to-list 'company-backends 'company-c-headers)
 (setq company-backends-c-mode-common '((company-c-headers
@@ -355,6 +357,7 @@ you should place your code here."
                                          company-dabbrev :with company-yasnippet)))
 
 ;;(setq org-default-notes-file (concat org-directory "/CODE/org/notes.org"))
+
 ;;company mode
 ;;(add-hook 'c-mode-hook 'company-mode)
 
