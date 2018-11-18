@@ -65,8 +65,8 @@ bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym $mod+Print --release exec --no-startup-id "scrot -s -b -m /tmp/screenshot.png && xclip -selection clipoard -t 'image/png' /tmp/screenshot.png"
+bindsym $mod+Shift+Print --release exec --no-startup-id "scrot -s -b -m /tmp/screenshot.png && xclip -selection clipoard -t 'image/png' /tmp/screenshot.png"
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
@@ -275,7 +275,7 @@ bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
 #
-#exec_always --no-startup-id feh --bg-scale ~/dotfiles/double.jpg
+# exec_always --no-startup-id feh --bg-scale ~/dotfiles/wallpaper.png
 exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
@@ -286,9 +286,10 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id termite -e "tmux new -s work"
-exec --no-startup-id LC_CTYPE=zh_CN.UTF-8 emacs -T "Emacs"
-exec --no-startup-id  xrandr  --output DP1 --primary --mode 1680x1050 --pos 0x0 --output HDMI1 --mode 1920x1080 --pos 1680x0
-
+exec --no-startup-id LC_CTYPE=zh_CN.UTF-8 emacs --daemon -T "Emacs"
+#exec --no-startup-id xrandr  --output DP1 --primary --mode 1680x1050 --pos 0x0 --output HDMI1 --mode 1920x1080 --pos 1680x0
+exec --no-startup-id xrandr --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 1050x0 --rotate normal --output DP2 --off --output DP1 --primary --mode 1680x1050 --pos 0x0 --rotate left --output VIRTUAL1 --off
+exec --no-startup-id redshift-gtk
 
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb

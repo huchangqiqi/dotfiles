@@ -36,42 +36,44 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+	plantuml
     graphviz
     gnus
     mu4e
-		haskell
-    (javascript :variables javascript-disable-tern-port-files t)
-		python
-		sql
-		scheme
-		racket
-		emacs-lisp
-		html
-		latex
+	haskell
+    (javascript :variables javascript-disable-tern-port-files nil)
+	python
+	sql
+	scheme
+	racket
+	emacs-lisp
+	html
+	latex
     (markdown :variables markdown-live-preview-engine 'vmd)
-		ranger
-		imenu-list
-		helm
-		(auto-completion :variables auto-completion-enable-snippets-in-popup t)
-		ycmd
-		gtags
-		org
-		git
-		(chinese :variables chinese-enable-fcitx t chinese-enable-youdao-dict t)
-		(c-c++ :variables c-c++-enable-clang-support t)
-		(shell :variables shell-default-term-shell "/bin/zsh" shell-default-height 30 shell-default-position 'bottom)
-		syntax-checking
-		version-control
-		;; better-defaults
-		;; semantic
-		;; spell-checking
-		)
+	ranger
+	imenu-list
+	helm
+	(auto-completion :variables auto-completion-enable-snippets-in-popup t)
+	;; ycmd
+	gtags
+	(org :variables org-enable-reveal-js-support t)
+	git
+	(chinese :variables chinese-enable-fcitx t chinese-enable-youdao-dict t)
+	;; (c-c++ :variables c-c++-enable-clang-support t)
+	c-c++
+	(shell :variables shell-default-term-shell "/bin/zsh" shell-default-height 30 shell-default-position 'bottom)
+	syntax-checking
+	version-control
+	;; better-defaults
+	;; semantic
+	;; spell-checking
+	)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-                                      (editorconfig :ensure t)
+                                      ;; (editorconfig :ensure t)
                                       ;; flymd
                                       openwith
                                       )
@@ -324,6 +326,7 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+;;
 
 ;; logo
 ;; (setq-default dotspacemacs-startup-banner '"~/dotfile")
@@ -331,30 +334,21 @@ you should place your code here."
 ;; (setq ycmd-force-semantic-completion t)
 (setq js2-include-node-externs t)
 
-;;ycmd
-;; (add-hook 'after-init-hook #'global-ycmd-mode)
-(set-variable 'ycmd-server-command '("python" "/home/spike/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd/"))
-(set-variable 'ycmd-global-config "/home/spike/dotfiles/.ycm_extra_conf.py")
+;; (set-variable 'ycmd-server-command '("python" "/home/spike/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd/"))
+;; (set-variable 'ycmd-global-config "/home/spike/dotfiles/.ycm_extra_conf.py")
+;; (add-hook 'python-mode-hook 'ycmd-mode)
+;; (add-hook 'js2-mode-hook 'ycmd-mode)
+;; (require 'company-ycmd)
+;; (company-ycmd-setup)
 
 ;;(set-variable 'ycmd-extra-conf-whitelist '("/home/spike/CODE/*"))
-;;(add-hook 'c++-mode-hook 'ycmd-mode)
-;; (add-hook 'c-mode-hook 'ycmd-mode)
-(add-hook 'python-mode-hook 'ycmd-mode)
-(add-hook 'js2-mode-hook 'ycmd-mode)
-
-(require 'company-ycmd)
-(company-ycmd-setup)
-
 ;; (require 'flycheck-ycmd)
 ;; (flycheck-ycmd-setup)
 
-;; (global-company-mode)
-;; (global-flycheck-mode)
-
 ;;(add-to-list 'company-backends 'company-c-headers)
-(setq company-backends-c-mode-common '((company-c-headers
-                                         company-ycmd
-                                         company-dabbrev :with company-yasnippet)))
+;; (setq company-backends-c-mode-common '((company-c-headers
+                                         ;; company-ycmd
+                                         ;; company-dabbrev :with company-yasnippet)))
 
 ;;(setq org-default-notes-file (concat org-directory "/CODE/org/notes.org"))
 
@@ -372,11 +366,18 @@ you should place your code here."
 ;;latex
 (add-hook 'doc-view-minor-mode-hook 'auto-revert-mode)
 
+(setq org-reveal-js "file:///home/spike/Example/reveal.js")
+
 ;; indent
-;;(setq-default tab-width 4)
-;;(setq-default indent-tabs-mode nil)
-;;(setq c-basic-offset 4)
-(setq-default js2-basic-offset 2)
+(setq-default c-basic-offset 4
+			  tab-width 4
+			  indent-tabs-mode t)
+(setq c-default-style "bsd")
+;; (setq c-file-style "bsd")
+
+;; (setq-default js2-basic-offset 2)
+;; (setq enable-dir-local-variables t)
+;; (setq enable-remote-dir-locals t)
 
 ;; Bind clang-format-region to C-M-tab in all modes:
 ;;(global-set-key [C-M-tab] 'clang-format-region)
@@ -388,7 +389,7 @@ you should place your code here."
 ;;comment
 (evil-leader/set-key "dc" 'srecode-document-insert-comment)
 ;;editorconfig
-(editorconfig-mode 1)
+;; (editorconfig-mode 1)
 ;;(add-hook 'editorconfig-custom-hooks 'editorconfig-domain-specific)
 
 ;; font
@@ -463,7 +464,6 @@ you should place your code here."
       mu4e-update-interval 300)
 ;; notifcation
 (setq mu4e-enable-notifications t)
-(mu4e-alert-enable-mode-line-display)
 )
 
 
@@ -485,7 +485,7 @@ you should place your code here."
      (output-html "xdg-open"))))
  '(ansi-color-names-vector
    ["#d2ceda" "#f2241f" "#67b11d" "#b1951d" "#3a81c3" "#a31db1" "#21b8c7" "#655370"])
- '(auctex-latexmk-inherit-TeX-PDF-mode t)
+ '(auctex-latexmk-inherit-TeX-PDF-mode t t)
  '(browse-url-browser-function (quote browse-url-chromium))
  '(evil-want-Y-yank-to-eol nil)
  '(latex-run-command "xelatex")
@@ -500,7 +500,7 @@ you should place your code here."
  '(org-export-backends (quote (ascii beamer html icalendar latex md odt)))
  '(package-selected-packages
    (quote
-    (graphviz-dot-mode mu4e-maildirs-extension mu4e-alert ht winum pyim pyim-basedict org-category-capture org-mime fuzzy ghub let-alist ranger openwith imenu-list flymd youdao-dictionary names chinese-word-at-point intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode geiser slime-company slime common-lisp-snippets dracual-theme dracula-theme web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data fcitx pangu-spacing find-by-pinyin-dired chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode racket-mode faceup vmd-mode editorconfig editorconfig-domain-specific stickyfunc-enhance srefactor git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl auctex-latexmk company-auctex auctex web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode elpy disaster company-c-headers cmake-mode clang-format pyenv-mode company-anaconda anaconda-mode yapfify pyvenv pytest py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode pythonic helm-gtags ggtags sql-indent xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help flycheck-ycmd company-ycmd ycmd request-deferred deferred smeargle orgit org-projectile pcache org-present org org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete mmm-mode markdown-toc markdown-mode gh-md spinner adaptive-wrap smartparens iedit anzu evil goto-chg undo-tree highlight f s bind-map packed dash helm avy helm-core popup async package-build evil-unimpaired ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode spacemacs-theme quelpa evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line))))
+    (ox-reveal plantuml-mode graphviz-dot-mode mu4e-maildirs-extension mu4e-alert ht winum pyim pyim-basedict org-category-capture org-mime fuzzy ghub let-alist ranger openwith imenu-list flymd youdao-dictionary names chinese-word-at-point intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode geiser slime-company slime common-lisp-snippets dracual-theme dracula-theme web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data fcitx pangu-spacing find-by-pinyin-dired chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode racket-mode faceup vmd-mode editorconfig editorconfig-domain-specific stickyfunc-enhance srefactor git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl auctex-latexmk company-auctex auctex web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode elpy disaster company-c-headers cmake-mode clang-format pyenv-mode company-anaconda anaconda-mode yapfify pyvenv pytest py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode pythonic helm-gtags ggtags sql-indent xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help flycheck-ycmd company-ycmd ycmd request-deferred deferred smeargle orgit org-projectile pcache org-present org org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete mmm-mode markdown-toc markdown-mode gh-md spinner adaptive-wrap smartparens iedit anzu evil goto-chg undo-tree highlight f s bind-map packed dash helm avy helm-core popup async package-build evil-unimpaired ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode spacemacs-theme quelpa evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

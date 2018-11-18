@@ -25,6 +25,8 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'altercation/vim-colors-solarized' 
 Bundle 'ZenCoding.vim'
 Bundle 'The-NERD-tree'
+Bundle 'ludovicchabant/vim-gutentags'
+Bundle 'skywind3000/gutentags_plus'
 
  colorscheme solarized
  let g:solarized_termtrans  = 1
@@ -40,7 +42,8 @@ Bundle 'ShowPairs'
 Bundle 'SudoEdit.vim'
 Bundle 'EasyGrep'
 Bundle 'VOoM'
-Bundle 'aceofall/gtags.vim'
+"Bundle 'aceofall/gtags.vim'
+
 "Bundle 'VimIM'
 "Bundle 'conque_term'
 "..................................

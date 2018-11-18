@@ -85,7 +85,7 @@ export TERM=xterm-256color
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias et="emacsclient -t"
-alias ec="emacsclient -c &"
+alias ec="emacsclient -nc"
 alias em="emacsclient -nw"
 alias vi="vim"
 alias chromium="chromium %U --proxy-server=127.0.0.1:1080"
@@ -127,3 +127,5 @@ PERL5LIB="/home/spike/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB
 PERL_LOCAL_LIB_ROOT="/home/spike/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/spike/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/spike/perl5"; export PERL_MM_OPT;
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
