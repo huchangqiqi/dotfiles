@@ -36,6 +36,7 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+    xclipboard
 	plantuml
     graphviz
     gnus
@@ -312,7 +313,8 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq configuration-layer--elpa-archives
+  ;;(setq configuration-layer--elpa-archives ;; master
+  (setq configuration-layer-elpa-archives ;; develop
     '(("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
       ("org-cn"   . "http://elpa.zilongshanren.com/org/")
       ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")))
@@ -507,3 +509,47 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(TeX-view-program-selection
+   (quote
+    (((output-dvi has-no-display-manager)
+      "dvi2tty")
+     ((output-dvi style-pstricks)
+      "dvips and gv")
+     (output-dvi "xdvi")
+     (output-pdf "xpdf")
+     (output-html "xdg-open"))))
+ '(ansi-color-names-vector
+   ["#d2ceda" "#f2241f" "#67b11d" "#b1951d" "#3a81c3" "#a31db1" "#21b8c7" "#655370"])
+ '(auctex-latexmk-inherit-TeX-PDF-mode t t)
+ '(browse-url-browser-function (quote browse-url-chromium))
+ '(evil-want-Y-yank-to-eol nil)
+ '(latex-run-command "xelatex")
+ '(org-agenda-files (quote ("~/CODE/org/spacemacs.org" "~/CODE/org/todo.org")))
+ '(org-babel-load-languages
+   (quote
+    ((shell . t)
+     (python . t)
+     (emacs-lisp . t)
+     (js . t))))
+ '(org-directory "~/CODE/org/" t)
+ '(org-export-backends (quote (ascii beamer html icalendar latex md odt)))
+ '(package-selected-packages
+   (quote
+    (pippel pipenv importmagic epc ctable concurrent ox-reveal plantuml-mode graphviz-dot-mode mu4e-maildirs-extension mu4e-alert ht winum pyim pyim-basedict org-category-capture org-mime fuzzy ghub let-alist ranger openwith imenu-list flymd youdao-dictionary names chinese-word-at-point intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode geiser slime-company slime common-lisp-snippets dracual-theme dracula-theme web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data fcitx pangu-spacing find-by-pinyin-dired chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode racket-mode faceup vmd-mode editorconfig editorconfig-domain-specific stickyfunc-enhance srefactor git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl auctex-latexmk company-auctex auctex web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode elpy disaster company-c-headers cmake-mode clang-format pyenv-mode company-anaconda anaconda-mode yapfify pyvenv pytest py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode pythonic helm-gtags ggtags sql-indent xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help flycheck-ycmd company-ycmd ycmd request-deferred deferred smeargle orgit org-projectile pcache org-present org org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete mmm-mode markdown-toc markdown-mode gh-md spinner adaptive-wrap smartparens iedit anzu evil goto-chg undo-tree highlight f s bind-map packed dash helm avy helm-core popup async package-build evil-unimpaired ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode spacemacs-theme quelpa evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
