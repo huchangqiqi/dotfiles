@@ -30,13 +30,13 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(react
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-    xclipboard
+    ;; xclipboard
 	plantuml
     graphviz
     gnus
@@ -74,7 +74,7 @@ values."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-                                      ;; (editorconfig :ensure t)
+                                      (editorconfig :ensure t)
                                       ;; flymd
                                       openwith
                                       )
@@ -313,8 +313,8 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  ;;(setq configuration-layer--elpa-archives ;; master
-  (setq configuration-layer-elpa-archives ;; develop
+  (setq configuration-layer--elpa-archives ;; master
+  ;; (setq configuration-layer-elpa-archives ;; develop
     '(("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
       ("org-cn"   . "http://elpa.zilongshanren.com/org/")
       ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")))
@@ -375,9 +375,8 @@ you should place your code here."
 			  tab-width 4
 			  indent-tabs-mode t)
 (setq c-default-style "bsd")
-;; (setq c-file-style "bsd")
 
-;; (setq-default js2-basic-offset 2)
+(setq-default js2-basic-offset 2)
 ;; (setq enable-dir-local-variables t)
 ;; (setq enable-remote-dir-locals t)
 
@@ -391,7 +390,8 @@ you should place your code here."
 ;;comment
 (evil-leader/set-key "dc" 'srecode-document-insert-comment)
 ;;editorconfig
-;; (editorconfig-mode 1)
+(editorconfig-mode t)
+
 ;;(add-hook 'editorconfig-custom-hooks 'editorconfig-domain-specific)
 
 ;; font

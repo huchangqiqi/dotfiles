@@ -84,8 +84,6 @@ export TERM=xterm-256color
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias et="emacsclient -t"
-alias ec="emacsclient -nc"
 alias em="emacsclient -nw"
 alias vi="vim"
 alias chromium="chromium %U --proxy-server=127.0.0.1:1080"
@@ -103,9 +101,6 @@ source $ZSH/oh-my-zsh.sh
 # autojump
 . /usr/share/autojump/autojump.zsh
 
-
-
-
 #alias for cnpm
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
   --cache=$HOME/.npm/.cache/cnpm \
@@ -122,7 +117,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-PATH="/home/spike/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/spike/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/spike/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/spike/perl5\""; export PERL_MB_OPT;
